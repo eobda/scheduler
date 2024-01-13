@@ -59,7 +59,7 @@ export default function Appointment(props) {
         <Show
           student={props.interview.student}
           interviewer={props.interview.interviewer}
-          onDelete={() => console.log("CONFIRM")}
+          onDelete={destroy}
           onEdit={() => transition(EDIT)}
         />
       )}
@@ -80,6 +80,7 @@ export default function Appointment(props) {
         />
       )}
       {mode === SAVING && <Status message="Saving" />}
+      {mode === DELETING && <Status message="Deleting" />}
     </article>
   );
 }
