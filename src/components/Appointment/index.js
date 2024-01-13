@@ -9,6 +9,7 @@ import Show from "components/Appointment/Show";
 import Form from "./Form";
 import Status from "./Status";
 import Confirm from "./Confirm";
+import Error from "./Error";
 
 import useVisualMode from "hooks/useVisualMode";
 
@@ -87,6 +88,18 @@ export default function Appointment(props) {
           message="Are you sure you would like to delete?"
           onCancel={back}
           onConfirm={destroy}
+        />
+      )}
+      {mode === ERROR_SAVE && (
+        <Error
+          message="Could not book appointment."
+          onClose={back}
+        />
+      )}
+      {mode === ERROR_DELETE && (
+        <Error
+          message="Could not cancel appointment."
+          onClose={back}
         />
       )}
     </article>
