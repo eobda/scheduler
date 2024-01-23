@@ -33,6 +33,7 @@ describe("Application", () => {
     fireEvent.change(getByPlaceholderText(appointment, /enter student name/i), {
       target: { value: "Lydia Miller-Jones" }
     });
+    fireEvent.click(getByAltText(appointment, "Sylvia Palmer"));
     console.log(prettyDOM(appointment));
   });
 
