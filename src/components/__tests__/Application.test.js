@@ -1,6 +1,6 @@
 import React from "react";
 
-import { render, cleanup, waitForElement, fireEvent, prettyDOM, getByText, getAllByTestId } from "@testing-library/react";
+import { render, cleanup, waitForElement, fireEvent, prettyDOM, getByText, getAllByTestId, getByAltText } from "@testing-library/react";
 
 import Application from "components/Application";
 
@@ -17,12 +17,19 @@ describe("Application", () => {
     });
   });
 
+  /*
+  Click the "Add" button on the first empty appointment.
+  Enter the name "Lydia Miller-Jones" into the input with the placeholder "Enter Student Name".
+  Click the first interviewer in the list.
+  Click the "Save" button on that same appointment.
+  */
   it("loads data, books an interview and reduces the spots remaining for the first day by 1", async () => {
     const { container } = render(<Application />);
 
     await waitForElement(() => getByText(container, "Archie Cohen"));
 
     const appointment = getAllByTestId(container, "appointment")[0];
+    fireEvent.click(getByAltText(appointment, "Add"));
     console.log(prettyDOM(appointment));
   });
 
