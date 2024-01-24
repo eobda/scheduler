@@ -104,6 +104,8 @@ describe("Application", () => {
     expect(getByText(appointment, "Eijun Sawamura")).toBeInTheDocument();
 
     // 10. Check that the interviewer has changed to "Sylvia Palmer"
+    expect(getByText(appointment, "Sylvia Palmer")).toBeInTheDocument();
+
     // 11. Check that DayListItem for "Monday" has the text "1 spot remaining"
 
     debug();
