@@ -1,6 +1,6 @@
 import React from "react";
 
-import { render, cleanup, waitForElement, fireEvent, prettyDOM, getByText, getAllByTestId, getByAltText, getByPlaceholderText, waitForElementToBeRemoved } from "@testing-library/react";
+import { render, cleanup, waitForElement, fireEvent, prettyDOM, getByText, getAllByTestId, getByAltText, getByPlaceholderText, waitForElementToBeRemoved, queryByText } from "@testing-library/react";
 
 import Application from "components/Application";
 
@@ -37,8 +37,11 @@ describe("Application", () => {
     expect(getByText(appointment, "Saving")).toBeInTheDocument();
 
     await waitForElementToBeRemoved(() => getByText(appointment, "Saving"));
-    
+
     expect(getByText(appointment, "Lydia Miller-Jones")).toBeInTheDocument();
+
+    const day = getAllByTestId(container, "day").find(day => queryByText(day, "Monday"));
+    expect(getByText(day, /no spots remaining/i)).toBeInTheDocument();
 
     debug();
   });
