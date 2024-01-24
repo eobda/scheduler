@@ -92,6 +92,8 @@ describe("Application", () => {
     fireEvent.click(getByAltText(appointment, "Sylvia Palmer"));
     
     // 6. Click "Save"
+    fireEvent.click(getByText(appointment, "Save"));
+
     // 7. Check that "Saving" text is shown in document
     // 8. Wait until "Saving" text is removed
     // 9. Check that "Eijun Sawamura" is in the document
