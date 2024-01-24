@@ -101,10 +101,12 @@ describe("Application", () => {
     await waitForElementToBeRemoved(() => getByText(appointment, "Saving"));
 
     // 9. Check that "Eijun Sawamura" is in the document
-    expect(getByText(appointment, "Eijun Sawamura")).toBeInTheDocument();
+    expect(queryByText(appointment, "Eijun Sawamura")).toBeInTheDocument();
+    expect(queryByText(appointment, "Archie Cohen")).not.toBeInTheDocument();
 
     // 10. Check that the interviewer has changed to "Sylvia Palmer"
-    expect(getByText(appointment, "Sylvia Palmer")).toBeInTheDocument();
+    expect(queryByText(appointment, "Sylvia Palmer")).toBeInTheDocument();
+    expect(queryByText(appointment, "Tori Malcolm")).not.toBeInTheDocument();
 
     // 11. Check that DayListItem for "Monday" has the text "1 spot remaining"
 
