@@ -89,6 +89,8 @@ describe("Application", () => {
     });
 
     // 5. Change the interviewer to "Sylvia Palmer"
+    fireEvent.click(getByAltText(appointment, "Sylvia Palmer"));
+    
     // 6. Click "Save"
     // 7. Check that "Saving" text is shown in document
     // 8. Wait until "Saving" text is removed
