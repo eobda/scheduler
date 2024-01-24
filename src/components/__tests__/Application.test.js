@@ -64,6 +64,8 @@ describe("Application", () => {
     expect(getByText(appointment, "Deleting")).toBeInTheDocument();
 
     // 6. Wait until the element with the "Add" button is displayed
+    await waitForElement(() => getByAltText(appointment, "Add"));
+
     // 7. Check that the DayListItem with the text "Monday" also has the text "2 spots remaining"
 
     console.log(prettyDOM(container));
