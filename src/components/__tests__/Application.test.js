@@ -44,4 +44,14 @@ describe("Application", () => {
     expect(getByText(day, /no spots remaining/i)).toBeInTheDocument();
   });
 
+  it("loads data, cancels an interview and increases the spots remaining for Monday by 1", () => {
+    // 1. Render the Application
+    // 2. Wait until the text "Archie Cohen" is displayed
+    // 3. Click the delete button on the interview slot that is displaying "Archie Cohen"
+    // 4. Click on the "Confirm" buton
+    // 5. Check that the element with "Deleting" is displayed
+    // 6. Wait until the element with the "Add" button is displayed
+    // 7. Check that the DayListItem with the text "Monday" also has the text "5 spots remaining"
+  });
+
 });
