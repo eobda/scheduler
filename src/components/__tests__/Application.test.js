@@ -35,7 +35,7 @@ describe("Application", () => {
     fireEvent.click(getByText(appointment, "Save"));
 
     // console.log(prettyDOM(appointment));
-    debug(appointment);
+    debug();
   });
 
 });
