@@ -95,6 +95,8 @@ describe("Application", () => {
     fireEvent.click(getByText(appointment, "Save"));
 
     // 7. Check that "Saving" text is shown in document
+    expect(getByText(appointment, "Saving")).toBeInTheDocument();
+
     // 8. Wait until "Saving" text is removed
     // 9. Check that "Eijun Sawamura" is in the document
     // 10. Check that the interviewer has changed to "Sylvia Palmer"
