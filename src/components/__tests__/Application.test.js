@@ -59,8 +59,10 @@ describe("Application", () => {
 
     // 4. Click on the "Confirm" buton
     fireEvent.click(getByText(appointment, "Confirm"));
-    
+
     // 5. Check that the element with "Deleting" is displayed
+    expect(getByText(appointment, "Deleting")).toBeInTheDocument();
+
     // 6. Wait until the element with the "Add" button is displayed
     // 7. Check that the DayListItem with the text "Monday" also has the text "2 spots remaining"
 
