@@ -109,6 +109,10 @@ describe("Application", () => {
     expect(queryByText(appointment, "Tori Malcolm")).not.toBeInTheDocument();
 
     // 11. Check that DayListItem for "Monday" has the text "1 spot remaining"
+    const day = getAllByTestId(container, "day").find(
+      day => queryByText(day, "Monday")
+    );
+    expect(queryByText(day, "1 spot remaining")).toBeInTheDocument();
 
     debug();
   });
