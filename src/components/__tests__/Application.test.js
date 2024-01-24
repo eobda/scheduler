@@ -84,6 +84,10 @@ describe("Application", () => {
     fireEvent.click(queryByAltText(appointment, "Edit"));
 
     // 4. Change the student name to "Eijun Sawamura"
+    fireEvent.change(getByPlaceholderText(appointment, "Enter Student Name"), {
+      target: { value: "Eijun Sawamura" }
+    });
+
     // 5. Change the interviewer to "Sylvia Palmer"
     // 6. Click "Save"
     // 7. Check that "Saving" text is shown in document
