@@ -98,6 +98,8 @@ describe("Application", () => {
     expect(getByText(appointment, "Saving")).toBeInTheDocument();
 
     // 8. Wait until "Saving" text is removed
+    await waitForElementToBeRemoved(() => getByText(appointment, "Saving"));
+
     // 9. Check that "Eijun Sawamura" is in the document
     // 10. Check that the interviewer has changed to "Sylvia Palmer"
     // 11. Check that DayListItem for "Monday" has the text "1 spot remaining"
