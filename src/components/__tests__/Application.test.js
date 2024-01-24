@@ -45,32 +45,21 @@ describe("Application", () => {
   });
 
   it("loads data, cancels an interview and increases the spots remaining for Monday by 1", async () => {
-    // 1. Render the Application
     const { container, debug } = render(<Application />);
 
-    // 2. Wait until the text "Archie Cohen" is displayed
     await waitForElement(() => getByText(container, "Archie Cohen"));
 
     const appointments = getAllByTestId(container, "appointment");
     const appointment = appointments[1];
 
-    // 3. Click the delete button on the interview slot that is displaying "Archie Cohen"
     fireEvent.click(getByAltText(appointment, "Delete"));
-
-    // 4. Click on the "Confirm" buton
     fireEvent.click(getByText(appointment, "Confirm"));
-
-    // 5. Check that the element with "Deleting" is displayed
     expect(getByText(appointment, "Deleting")).toBeInTheDocument();
 
-    // 6. Wait until the element with the "Add" button is displayed
     await waitForElement(() => getByAltText(appointment, "Add"));
 
-    // 7. Check that the DayListItem with the text "Monday" also has the text "2 spots remaining"
     const day = getAllByTestId(container, "day").find(day => queryByText(day, "Monday"));
     expect(getByText(day, /2 spots remaining/i)).toBeInTheDocument();
-
-    debug();
   });
 
 });
