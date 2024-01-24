@@ -62,9 +62,13 @@ describe("Application", () => {
     expect(getByText(day, /2 spots remaining/i)).toBeInTheDocument();
   });
 
-  it("loads data, edits an interview and keeps the spots remaining for Monday the same", () => {
+  it("loads data, edits an interview and keeps the spots remaining for Monday the same", async () => {
     // 1. Render the application
+    const { container, debug } = render(<Application />);
+
     // 2. Wait until text "Archie Cohen" is in the document
+    await waitForElement(() => container, "Archie Cohen");
+
     // 3. Click the "Edit" button on an interview
     // 4. Change the student name to "Eijun Sawamura"
     // 5. Change the interviewer to "Sylvia Palmer"
@@ -74,6 +78,8 @@ describe("Application", () => {
     // 9. Check that "Eijun Sawamura" is in the document
     // 10. Check that the interviewer has changed to "Sylvia Palmer"
     // 11. Check that DayListItem for "Monday" has the text "1 spot remaining"
+
+    debug();
   });
 
 });
