@@ -104,8 +104,9 @@ describe("Application", () => {
   });
 
   it("shows the save error when failing to save an appointment", async () => {
-    const { container, debug } = render(<Application />);
     axios.put.mockRejectedValueOnce();
+
+    const { container } = render(<Application />);
 
     await waitForElement(() => getByText(container, "Archie Cohen"));
 
@@ -125,8 +126,28 @@ describe("Application", () => {
     await waitForElementToBeRemoved(() => getByText(appointment, "Saving"));
 
     expect(getByText(appointment, /could not book appointment/i)).toBeInTheDocument();
+  });
 
-    debug();
+  it("shows the delete error when failing to delete an existing appointment", async () => {
+    axios.delete.mockRejectedValueOnce();
+
+    const { container } = render(<Application />);
+
+    await waitForElement(() => getByText(container, "Archie Cohen"));
+
+    const appointment = getAllByTestId(container, "appointment").find(
+      appointment => queryByText(appointment, "Archie Cohen")
+      );
+
+    fireEvent.click(queryByAltText(appointment, "Delete"));
+    expect(getByText(appointment, "Are you sure you would like to delete?")).toBeInTheDocument();
+
+    fireEvent.click(getByText(appointment, "Confirm"));
+    expect(getByText(appointment, "Deleting")).toBeInTheDocument();
+
+    await waitForElementToBeRemoved(() => getByText(appointment, "Deleting"));
+
+    expect(getByText(appointment, /could not cancel appointment/i)).toBeInTheDocument();
   });
 
 });
