@@ -1,5 +1,7 @@
 describe("Appointments", () => {
   it("should book an interview", () => {
+    cy.request("GET", "/api/debug/reset");
+
     cy.visit("/");
 
     cy.contains("Monday");
