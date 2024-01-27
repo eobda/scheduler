@@ -3,5 +3,9 @@ describe("Appointments", () => {
     cy.visit("/");
 
     cy.contains("Monday");
+
+    cy.get("[alt=Add]")
+      .first()
+      .click();
   });
 });
